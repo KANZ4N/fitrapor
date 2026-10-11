@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Makaleler & Literatür Dizin - FitRapor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 500: '#22c55e', 600: '#16a34a' } } } } }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-slate-950">
+
+  <!-- NAVBAR -->
+  <nav class="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="relative group">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white py-2">
+          <span class="bg-brand-500 text-slate-950 px-2 py-0.5 rounded text-sm font-black">FIT</span>
+          <span>RAPOR</span>
+          <svg class="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </a>
+        <div class="absolute left-0 top-full pt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-2xl p-2 space-y-1">
+            <a href="makaleler.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-brand-500 bg-slate-800/60">Makaleler (PubMed Dizin)</a>
+            <a href="raporlar.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60">Haftalık Rapor Arşivi</a>
+            <a href="istek.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60">İstek & Dilek</a>
+          </div>
+        </div>
+      </div>
+      <button id="openDrawerBtn" class="flex items-center gap-2 bg-slate-900 border border-slate-800 hover:border-brand-500/50 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition-all">Hesaplayıcılar</button>
+    </div>
+  </nav>
+
+  <!-- PUBMED MAKALELER LİSTESİ -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mb-8">
+      <div class="flex items-center gap-3">
+        <span class="bg-brand-500/10 text-brand-500 text-xs font-mono font-bold px-2.5 py-1 rounded border border-brand-500/20">PUBMED INDEX STYLE</span>
+        <h1 class="text-3xl font-extrabold text-white tracking-tight">Akademik Literatür Dizin</h1>
+      </div>
+      <p class="text-slate-400 text-sm mt-1">Peer-reviewed veritabanlarından derlenen metodolojik çalışma özetleri.</p>
+    </div>
+
+    <!-- ARAMA BARI -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 mb-8 space-y-4">
+      <div class="relative">
+        <input type="text" placeholder="Literatürde ara (Örn: Mechanical Tension, Hypertrophy, EMG)..." class="w-full bg-slate-950 border border-slate-800 rounded-lg py-3 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-brand-500">
+        <svg class="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs font-mono">
+        <button class="bg-brand-500 text-slate-950 px-3 py-1.5 rounded font-bold">Tümü</button>
+        <button class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-3 py-1.5 rounded">Meta-Analiz (Level 1)</button>
+        <button class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-3 py-1.5 rounded">Sistematik Derleme</button>
+        <button class="bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 px-3 py-1.5 rounded">Biyomekanik / EMG</button>
+      </div>
+    </div>
+
+    <!-- İÇERİK KARTLARI -->
+    <div class="space-y-6">
+      <article class="bg-slate-900/60 border border-slate-800 border-l-4 border-l-brand-500 rounded-r-xl p-6 hover:bg-slate-900 transition-all">
+        <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-400 mb-2">
+          <span>PMID: 38921041 • DOI: 10.1016/j.jbiomech.2026.04.012</span>
+          <span class="bg-brand-500/10 text-brand-500 border border-brand-500/20 px-2 py-0.5 rounded">Meta-Analiz</span>
+        </div>
+        <h3 class="text-xl font-bold text-white hover:text-brand-500 transition-colors">
+          <a href="raporlar/bulten-03.html">Kas Hipertrofisinde Mekanik Gerilim: Biyomekanik Sınırlar ve Aktif Kas Ucu Uzaması</a>
+        </h3>
+        <p class="text-xs font-mono text-slate-400 mt-1">Kar O, Yılmaz A. FitRapor Sci Rev. 2026 Oct 10;14(2):102-115.</p>
+        <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+          <strong class="text-slate-200 font-semibold">[Abstract]</strong> Bu çalışmada tam eklem hareket açıklığı (fROM) ile kısmi ROM antrenmanlarının bölgesal kas hipertrofisine etkisi incelenmiştir...
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <!-- DRAWER KODU BURAYA EKLENECEK -->
+<!-- SAĞDAN KAYAN HESAPLAYICI PANELİ -->
+<div id="drawerOverlay" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<aside id="drawerPanel" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+  <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+      <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+      Biyomekanik Araçlar
+    </h2>
+    <button id="closeDrawerBtn" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+  </div>
+
+  <div class="flex border-b border-slate-800 bg-slate-950/50 p-1 gap-1 text-xs font-semibold">
+    <button class="tab-btn flex-1 py-2.5 rounded-md text-brand-500 bg-slate-800" onclick="switchTab('rm')">1RM</button>
+    <button class="tab-btn flex-1 py-2.5 rounded-md text-slate-400 hover:text-white" onclick="switchTab('kalori')">Kalori (TDEE)</button>
+    <button class="tab-btn flex-1 py-2.5 rounded-md text-slate-400 hover:text-white" onclick="switchTab('yag')">Yağ Oranı</button>
+  </div>
+
+  <div class="p-6 overflow-y-auto flex-1 space-y-6">
+    <div id="tab-rm" class="tab-content space-y-4">
+      <p class="text-xs text-slate-400">Epley & Brzycki algoritmalarıyla maksimum tek tekrar gücünüzü tahmin edin.</p>
+      <div>
+        <label class="block text-xs font-mono text-slate-400 mb-1">KALDIRILAN AĞIRLIK (KG)</label>
+        <input type="number" id="rmWeight" placeholder="Örn: 100" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+      </div>
+      <div>
+        <label class="block text-xs font-mono text-slate-400 mb-1">TEKRAR SAYISI</label>
+        <input type="number" id="rmReps" placeholder="Örn: 8" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+      </div>
+      <button id="calcRmBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">1RM Hesapla</button>
+      <div id="rmResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+        <span class="text-xs text-slate-500 font-mono block">TAHMİNİ 1RM</span>
+        <span id="rmVal" class="text-2xl font-black text-brand-500">0 kg</span>
+      </div>
+    </div>
+
+    <div id="tab-kalori" class="tab-content hidden space-y-4">
+      <p class="text-xs text-slate-400">Mifflin-St Jeor formülü ile Günlük Toplam Enerji Harcaması (TDEE).</p>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-mono text-slate-400 mb-1">KİLO (KG)</label>
+          <input type="number" id="tdeeWeight" placeholder="80" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-400 mb-1">BOY (CM)</label>
+          <input type="number" id="tdeeHeight" placeholder="180" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-mono text-slate-400 mb-1">YAŞ</label>
+        <input type="number" id="tdeeAge" placeholder="28" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+      </div>
+      <button id="calcTdeeBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">TDEE Hesapla</button>
+      <div id="tdeeResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+        <span class="text-xs text-slate-500 font-mono block">GÜNLÜK KALORİ İHTİYACI</span>
+        <span id="tdeeVal" class="text-2xl font-black text-brand-500">0 kcal</span>
+      </div>
+    </div>
+
+    <div id="tab-yag" class="tab-content hidden space-y-4">
+      <p class="text-xs text-slate-400">US Navy yöntemiyle bel ve boyun ölçümüne göre tahmini yağ oranı.</p>
+      <div>
+        <label class="block text-xs font-mono text-slate-400 mb-1">BEL ÇEVRESİ (CM)</label>
+        <input type="number" id="navyWaist" placeholder="85" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+      </div>
+      <div>
+        <label class="block text-xs font-mono text-slate-400 mb-1">BOYUN ÇEVRESİ (CM)</label>
+        <input type="number" id="navyNeck" placeholder="38" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+      </div>
+      <button id="calcNavyBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">Yağ Oranı Hesapla</button>
+      <div id="navyResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+        <span class="text-xs text-slate-500 font-mono block">TAHMİNİ YAĞ ORANI</span>
+        <span id="navyVal" class="text-2xl font-black text-brand-500">%0</span>
+      </div>
+    </div>
+  </div>
+</aside>
+  <script src="js/main.js"></script>
+</body>
+</html>
