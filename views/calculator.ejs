@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<main class="max-w-4xl mx-auto px-4 py-12">
+  <div class="text-center mb-10">
+    <h1 class="text-3xl font-extrabold text-white">Biyomekanik 1RM & Hacim Optimizeri</h1>
+    <p class="text-slate-400 text-sm mt-2">Epley & Brzycki formülleri ile tahmini 1RM hesaplama.</p>
+  </div>
+
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 md:p-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-xs font-mono text-slate-400 mb-2">KALDIRILAN AĞIRLIK (KG)</label>
+        <input type="number" id="weight" placeholder="Örn: 100" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-white focus:outline-none focus:border-brand-500">
+      </div>
+      <div>
+        <label class="block text-xs font-mono text-slate-400 mb-2">TEKRAR SAYISI</label>
+        <input type="number" id="reps" placeholder="Örn: 8" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-white focus:outline-none focus:border-brand-500">
+      </div>
+    </div>
+
+    <button id="calcBtn" class="w-full mt-6 bg-brand-500 text-slate-950 font-bold py-3 rounded-lg hover:bg-brand-600 transition-colors">
+      Hesapla
+    </button>
+
+    <div id="results" class="mt-8 border-t border-slate-800 pt-6 hidden">
+      <div class="grid grid-cols-2 gap-4 text-center">
+        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
+          <span class="text-xs text-slate-500 font-mono block">EPLEY 1RM</span>
+          <span id="epleyVal" class="text-2xl font-bold text-brand-500">0 kg</span>
+        </div>
+        <div class="bg-slate-950 p-4 rounded-lg border border-slate-800">
+          <span class="text-xs text-slate-500 font-mono block">BRZYCKI 1RM</span>
+          <span id="brzyckiVal" class="text-2xl font-bold text-brand-500">0 kg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/js/calculator.js"></script>
+
+<%- include('partials/footer') %>
