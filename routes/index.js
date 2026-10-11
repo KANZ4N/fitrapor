@@ -2,12 +2,9 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter');
-const { marked } = require('marked');
 
 const articlesDirectory = path.join(process.cwd(), 'content/articles');
 
-// Klasör bulunamazsa veya boşsa sitenin çökmesini engelleyen varsayılan içerik
 const defaultArticles = [
   {
     id: 1,
@@ -33,100 +30,87 @@ const defaultArticles = [
   }
 ];
 
-// Güvenli Makale Okuma Fonksiyonu
-function getAllArticles() {
-  if (!fs.existsSync(articlesDirectory)) {
+function getArticles() {
+  try {
+    if (!fs.existsSync(articlesDirectory)) {
+      return defaultArticles;
+    }
+
+    const matter = require('gray-matter');
+    const fileNames = fs.readdirSync(articlesDirectory);
+    const mdFiles = fileNames.filter(file => file.endsWith('.md'));
+
+    if (mdFiles.length === 0) {
+      return defaultArticles;
+    }
+
+    return mdFiles.map(fileName => {
+      const fullPath = path.join(articlesDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents);
+      return data;
+    });
+  } catch (err) {
+    console.error('Makale okuma hatası:', err);
     return defaultArticles;
   }
-
-  const fileNames = fs.readdirSync(articlesDirectory);
-  const mdFiles = fileNames.filter(file => file.endsWith('.md'));
-
-  if (mdFiles.length === 0) {
-    return defaultArticles;
-  }
-
-  return mdFiles.map(fileName => {
-    const fullPath = path.join(articlesDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(fileContents);
-    return data;
-  });
 }
 
-// 1. Ana Sayfa Rotalaması
 router.get('/', (req, res) => {
-  try {
-    const articles = getAllArticles();
-    res.render('index', { title: 'FitRapor - Kanıta Dayalı Akademik Fitness', articles });
-  } catch (error) {
-    console.error('Ana Sayfa Yükleme Hatası:', error);
-    res.render('index', { title: 'FitRapor - Kanıta Dayalı Akademik Fitness', articles: defaultArticles });
-  }
+  const articles = getArticles();
+  res.render('index', { 
+    title: 'FitRapor - Kanıta Dayalı Akademik Fitness',
+    articles: articles 
+  });
 });
 
-// 2. Makale Detay Rotalaması
 router.get('/makale/:slug', (req, res) => {
   const { slug } = req.params;
+  const articles = getArticles();
+  const article = articles.find(a => a.slug === slug);
+
+  if (!article) {
+    return res.status(404).render('404', { title: 'Makale Bulunamadı - FitRapor' });
+  }
+
+  let bodyContent = article.excerpt;
   const mdPath = path.join(articlesDirectory, `${slug}.md`);
 
   if (fs.existsSync(mdPath)) {
-    const fileContents = fs.readFileSync(mdPath, 'utf8');
-    const { data, content } = matter(fileContents);
-    const htmlContent = marked(content);
-
-    return res.render('article', {
-      title: `${data.title} - FitRapor`,
-      article: { ...data, body: htmlContent }
-    });
+    try {
+      const matter = require('gray-matter');
+      const marked = require('marked');
+      const fileContents = fs.readFileSync(mdPath, 'utf8');
+      const { content } = matter(fileContents);
+      bodyContent = typeof marked.parse === 'function' ? marked.parse(content) : marked(content);
+    } catch (err) {
+      console.error('MD Parsing hatası:', err);
+    }
   }
 
-  const article = defaultArticles.find(a => a.slug === slug);
-  if (article) {
-    return res.render('article', {
-      title: `${article.title} - FitRapor`,
-      article: { ...article, body: article.excerpt }
-    });
-  }
-
-  return res.status(404).render('404', { title: 'Makale Bulunamadı - FitRapor' });
+  res.render('article', { 
+    title: `${article.title} - FitRapor`,
+    article: { ...article, body: bodyContent }
+  });
 });
 
-// 3. Hesaplayıcı Sayfası
 router.get('/hesaplayici', (req, res) => {
   res.render('calculator', { 
     title: 'Biyomekanik 1RM & Hacim Optimizeri - FitRapor' 
   });
 });
 
-// 4. Bülten Abonelik API
-router.post('/api/subscribe', async (req, res) => {
+router.post('/api/subscribe', (req, res) => {
   const { email } = req.body;
   if (!email || !email.includes('@')) {
     return res.status(400).json({ success: false, message: 'Geçerli bir e-posta adresi giriniz.' });
   }
 
-  if (!process.env.RESEND_API_KEY) {
-    console.log(`[Bülten Kaydı - Key Yok]: ${email}`);
-    return res.json({ success: true, message: 'FitRapor Pazar Bültenine kaydınız tamamlandı.' });
-  }
-
-  try {
-    const { Resend } = require('resend');
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    await resend.emails.send({
-      from: 'FitRapor <bulten@fitrapor.com>',
-      to: email,
-      subject: 'FitRapor Akademik Bültenine Hoş Geldiniz',
-      html: '<p>Her Pazar 09:43\'te kanıta dayalı analizler e-posta kutunuzda olacak.</p>'
-    });
-
-    return res.json({ success: true, message: 'FitRapor Pazar Bültenine kaydınız tamamlandı.' });
-  } catch (error) {
-    console.error('Resend Hatası:', error);
-    return res.status(500).json({ success: false, message: 'E-posta servisi yanıt veremedi.' });
-  }
+  console.log(`[Yeni Bülten Abonesi]: ${email}`);
+  return res.json({ 
+    success: true, 
+    message: 'FitRapor Pazar Bültenine kaydınız başarıyla tamamlandı.' 
+  });
 });
 
 module.exports = router;
