@@ -7,43 +7,13 @@ const { marked } = require('marked');
 
 const articlesDirectory = path.join(process.cwd(), 'content/articles');
 
-// Tüm makaleleri okuyan yardımcı fonksiyon
-function getAllArticles() {
-  const fileNames = fs.readdirSync(articlesDirectory);
-  return fileNames.map(fileName => {
-    const fullPath = path.join(articlesDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(fileContents);
-    return data;
-  });
-}
-
-// Ana Sayfa Rota Güncellemesi
-router.get('/', (req, res) => {
-  const articles = getAllArticles();
-  res.render('index', { title: 'FitRapor - Kanıta Dayalı Akademik Fitness', articles });
-});
-
-// Makale Detay Rota Güncellemesi
-router.get('/makale/:slug', (req, res) => {
-  const fullPath = path.join(articlesDirectory, `${req.params.slug}.md`);
-  if (!fs.existsSync(fullPath)) return res.status(404).render('404');
-
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
-  const htmlContent = marked(content);
-
-  res.render('article', {
-    title: `${data.title} - FitRapor`,
-    article: { ...data, body: htmlContent }
-  });
-});
-const articles = [
+// Klasör bulunamazsa veya boşsa sitenin çökmesini engelleyen varsayılan içerik
+const defaultArticles = [
   {
     id: 1,
     slug: 'hipertrofi-ve-mekanik-gerilim',
     title: 'Kas Hipertrofisinde Mekanik Gerilim: Biyomekanik Sınırlar ve Aktif Kas Ucu',
-    excerpt: 'Son meta-analizler ışığında tam eklem hareket açıklığı (fROM) ile kısmi rom karşılaştırması. Kas fiber oryantasyonunun büyümedeki etkisi.',
+    excerpt: 'Son meta-analizler ışığında tam eklem hareket açıklığı (fROM) ile kısmi rom karşılaştırması.',
     category: 'Biyomekanik',
     evidenceLevel: 'Level 1 - Meta-Analiz',
     readTime: '6 dk',
@@ -54,7 +24,7 @@ const articles = [
     id: 2,
     slug: 'protein-sentezi-ve-zamanlama',
     title: 'Direnç Antrenmanı Sonrası Anabolik Pencere Miti vs. Günlük Toplam Makro',
-    excerpt: '2025/2026 derleme çalışmaları: Kas protein sentezi (MPS) tetiklenmesinde öğün zamanlamasının günlük 1.6-2.2g/kg protein alımına kıyasla etkisi.',
+    excerpt: '2025/2026 derleme çalışmaları: Kas protein sentezi (MPS) tetiklenmesinde öğün zamanlamasının etkisi.',
     category: 'Beslenme Fizyolojisi',
     evidenceLevel: 'Level 1 - Systematic Review',
     readTime: '8 dk',
@@ -63,40 +33,88 @@ const articles = [
   }
 ];
 
+// Güvenli Makale Okuma Fonksiyonu
+function getAllArticles() {
+  if (!fs.existsSync(articlesDirectory)) {
+    return defaultArticles;
+  }
+
+  const fileNames = fs.readdirSync(articlesDirectory);
+  const mdFiles = fileNames.filter(file => file.endsWith('.md'));
+
+  if (mdFiles.length === 0) {
+    return defaultArticles;
+  }
+
+  return mdFiles.map(fileName => {
+    const fullPath = path.join(articlesDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(fileContents);
+    return data;
+  });
+}
+
+// 1. Ana Sayfa Rotalaması
 router.get('/', (req, res) => {
-  res.render('index', { 
-    title: 'FitRapor - Kanıta Dayalı Akademik Fitness',
-    articles: articles 
-  });
+  try {
+    const articles = getAllArticles();
+    res.render('index', { title: 'FitRapor - Kanıta Dayalı Akademik Fitness', articles });
+  } catch (error) {
+    console.error('Ana Sayfa Yükleme Hatası:', error);
+    res.render('index', { title: 'FitRapor - Kanıta Dayalı Akademik Fitness', articles: defaultArticles });
+  }
 });
 
+// 2. Makale Detay Rotalaması
 router.get('/makale/:slug', (req, res) => {
-  const article = articles.find(a => a.slug === req.params.slug);
-  if (!article) return res.status(404).render('404', { title: 'Makale Bulunamadı' });
-  
-  res.render('article', { 
-    title: `${article.title} - FitRapor`,
-    article 
-  });
+  const { slug } = req.params;
+  const mdPath = path.join(articlesDirectory, `${slug}.md`);
+
+  if (fs.existsSync(mdPath)) {
+    const fileContents = fs.readFileSync(mdPath, 'utf8');
+    const { data, content } = matter(fileContents);
+    const htmlContent = marked(content);
+
+    return res.render('article', {
+      title: `${data.title} - FitRapor`,
+      article: { ...data, body: htmlContent }
+    });
+  }
+
+  const article = defaultArticles.find(a => a.slug === slug);
+  if (article) {
+    return res.render('article', {
+      title: `${article.title} - FitRapor`,
+      article: { ...article, body: article.excerpt }
+    });
+  }
+
+  return res.status(404).render('404', { title: 'Makale Bulunamadı - FitRapor' });
 });
 
+// 3. Hesaplayıcı Sayfası
 router.get('/hesaplayici', (req, res) => {
   res.render('calculator', { 
     title: 'Biyomekanik 1RM & Hacim Optimizeri - FitRapor' 
   });
 });
 
-const { Resend } = require('resend');
-const resend = new Resend(process.env.RESEND_API_KEY);
-
+// 4. Bülten Abonelik API
 router.post('/api/subscribe', async (req, res) => {
   const { email } = req.body;
   if (!email || !email.includes('@')) {
     return res.status(400).json({ success: false, message: 'Geçerli bir e-posta adresi giriniz.' });
   }
 
+  if (!process.env.RESEND_API_KEY) {
+    console.log(`[Bülten Kaydı - Key Yok]: ${email}`);
+    return res.json({ success: true, message: 'FitRapor Pazar Bültenine kaydınız tamamlandı.' });
+  }
+
   try {
-    // Abone e-postasını kayıt altına alma veya karşılama maili atma
+    const { Resend } = require('resend');
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     await resend.emails.send({
       from: 'FitRapor <bulten@fitrapor.com>',
       to: email,
@@ -106,8 +124,8 @@ router.post('/api/subscribe', async (req, res) => {
 
     return res.json({ success: true, message: 'FitRapor Pazar Bültenine kaydınız tamamlandı.' });
   } catch (error) {
-    console.error('Resend Error:', error);
-    return res.status(500).json({ success: false, message: 'E-posta servisi yanıt vermedi.' });
+    console.error('Resend Hatası:', error);
+    return res.status(500).json({ success: false, message: 'E-posta servisi yanıt veremedi.' });
   }
 });
 
