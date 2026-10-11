@@ -1,6 +1,43 @@
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
+const path = require('path');
+const matter = require('gray-matter');
+const { marked } = require('marked');
 
+const articlesDirectory = path.join(process.cwd(), 'content/articles');
+
+// Tüm makaleleri okuyan yardımcı fonksiyon
+function getAllArticles() {
+  const fileNames = fs.readdirSync(articlesDirectory);
+  return fileNames.map(fileName => {
+    const fullPath = path.join(articlesDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(fileContents);
+    return data;
+  });
+}
+
+// Ana Sayfa Rota Güncellemesi
+router.get('/', (req, res) => {
+  const articles = getAllArticles();
+  res.render('index', { title: 'FitRapor - Kanıta Dayalı Akademik Fitness', articles });
+});
+
+// Makale Detay Rota Güncellemesi
+router.get('/makale/:slug', (req, res) => {
+  const fullPath = path.join(articlesDirectory, `${req.params.slug}.md`);
+  if (!fs.existsSync(fullPath)) return res.status(404).render('404');
+
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const { data, content } = matter(fileContents);
+  const htmlContent = marked(content);
+
+  res.render('article', {
+    title: `${data.title} - FitRapor`,
+    article: { ...data, body: htmlContent }
+  });
+});
 const articles = [
   {
     id: 1,
@@ -49,17 +86,29 @@ router.get('/hesaplayici', (req, res) => {
   });
 });
 
-router.post('/api/subscribe', (req, res) => {
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+router.post('/api/subscribe', async (req, res) => {
   const { email } = req.body;
   if (!email || !email.includes('@')) {
     return res.status(400).json({ success: false, message: 'Geçerli bir e-posta adresi giriniz.' });
   }
-  
-  console.log(`[Yeni Abone]: ${email}`);
-  return res.json({ 
-    success: true, 
-    message: 'FitRapor Pazar Bültenine kaydınız başarıyla tamamlandı.' 
-  });
+
+  try {
+    // Abone e-postasını kayıt altına alma veya karşılama maili atma
+    await resend.emails.send({
+      from: 'FitRapor <bulten@fitrapor.com>',
+      to: email,
+      subject: 'FitRapor Akademik Bültenine Hoş Geldiniz',
+      html: '<p>Her Pazar 09:43\'te kanıta dayalı analizler e-posta kutunuzda olacak.</p>'
+    });
+
+    return res.json({ success: true, message: 'FitRapor Pazar Bültenine kaydınız tamamlandı.' });
+  } catch (error) {
+    console.error('Resend Error:', error);
+    return res.status(500).json({ success: false, message: 'E-posta servisi yanıt vermedi.' });
+  }
 });
 
 module.exports = router;
