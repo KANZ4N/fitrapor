@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akademik Fitness Bülteni — Sayı #01 (PT Özel)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b1120;
+            color: #f1f5f9;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease-in-out;
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-200 min-h-screen selection:bg-sky-500 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-sky-500/20">
+                    <i data-lucide="dumbbell" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg tracking-tight text-white flex items-center gap-2">
+                        AKADEMİK FİTNESS BÜLTENİ
+                        <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">Sayı #01</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 hidden sm:block">Personal Trainer / Saha Antrenörleri İçin Literatür Rehberi</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-4 text-xs font-mono">
+                <span class="hidden md:inline-flex items-center gap-1.5 text-slate-400 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-slate-700/50">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-sky-400"></i>
+                    11 Ekim 2026, Pazar
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/20">
+                    <i data-lucide="check-check" class="w-3.5 h-3.5"></i>
+                    PT Uygulama Odaklı
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="lg:col-span-3 space-y-6">
+                <div class="glass-panel rounded-2xl p-5 sticky top-24">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
+                        <i data-lucide="list" class="w-4 h-4 text-sky-400"></i>
+                        Hızlı Menü
+                    </h2>
+                    <nav class="space-y-1.5 text-sm font-medium">
+                        <a href="#section-1" class="flex items-start gap-2.5 p-2 rounded-lg text-slate-300 hover:text-sky-400 hover:bg-slate-800/50 transition-colors">
+                            <span class="font-mono text-xs text-sky-400 mt-0.5">01</span>
+                            <span>Biyomekanik: Kas Boyu & Esneme</span>
+                        </a>
+                        <a href="#section-2" class="flex items-start gap-2.5 p-2 rounded-lg text-slate-300 hover:text-sky-400 hover:bg-slate-800/50 transition-colors">
+                            <span class="font-mono text-xs text-sky-400 mt-0.5">02</span>
+                            <span>Fizyoloji: Kasılma Temposu</span>
+                        </a>
+                        <a href="#section-3" class="flex items-start gap-2.5 p-2 rounded-lg text-slate-300 hover:text-sky-400 hover:bg-slate-800/50 transition-colors">
+                            <span class="font-mono text-xs text-sky-400 mt-0.5">03</span>
+                            <span>Beslenme: Doz & Protein Sentezi</span>
+                        </a>
+                        <a href="#section-4" class="flex items-start gap-2.5 p-2 rounded-lg text-slate-300 hover:text-indigo-400 hover:bg-slate-800/50 transition-colors">
+                            <span class="font-mono text-xs text-indigo-400 mt-0.5">04</span>
+                            <span>Bilgi Tekrarı: Boyut İlkesi</span>
+                        </a>
+                        <a href="#section-5" class="flex items-start gap-2.5 p-2 rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors">
+                            <span class="font-mono text-xs text-rose-400 mt-0.5">05</span>
+                            <span>Makale Otopsisi: Kreatin Mitosu</span>
+                        </a>
+                        <a href="#section-6" class="flex items-start gap-2.5 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/50 transition-colors">
+                            <span class="font-mono text-xs text-slate-500 mt-0.5">06</span>
+                            <span>Akademik Kaynakça</span>
+                        </a>
+                    </nav>
+
+                    <div class="mt-6 pt-5 border-t border-slate-800 text-xs text-slate-400 space-y-2.5">
+                        <div class="flex justify-between items-center">
+                            <span>Hedef Kitle:</span>
+                            <span class="font-mono font-semibold text-sky-400">Personal Trainer</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Dil Düzeyi:</span>
+                            <span class="font-mono font-semibold text-emerald-400">Sade & Uygulamalı</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Okuma Süresi:</span>
+                            <span class="font-mono font-semibold text-slate-200">~8 Dakika</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="lg:col-span-9 space-y-8">
+
+                <!-- Welcome Banner -->
+                <section class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-sky-500/20">
+                    <div class="absolute -right-16 -top-16 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 text-xs font-mono font-semibold mb-3 border border-sky-500/20">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> PT Özel Derlemesi
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                            Haftalık Akademik Fitness Bülteni
+                        </h2>
+                        <p class="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Hocam selam. Bu haftaki bültende ağır akademik jargondan arındırılmış, doğrudan salonda üyelerinle iletişiminde ve antrenman programlamanda kullanabileceğin <strong class="text-white">3 güncel araştırma</strong>, <strong class="text-indigo-400">1 temel bilgi tekrarı</strong> ve <strong class="text-rose-400">1 makale otopsisi</strong> hazırladık.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- SECTION 1 -->
+                <article id="section-1" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 font-mono font-bold flex items-center justify-center text-sm">01</span>
+                            <span class="text-xs font-mono uppercase tracking-wider font-semibold text-sky-400">Biyomekanik & Hipertrofi</span>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">JSCR — Q1</span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white leading-snug">
+                            Kası Uzun Pozisyondayken (Esneterek) Çalıştırmak Büyümeyi Nasıl Etkiler?
+                        </h3>
+                        <p class="text-xs font-mono text-slate-400 mt-2">
+                            Schoenfeld et al. (2026) — <em>Journal of Strength and Conditioning Research</em>
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+                        <div class="glass-card p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-mono text-sky-400 font-semibold uppercase block">📌 Ne Yapıldı? (Metodoloji)</span>
+                            <p>
+                                En az 3 yıl antrenman geçmişi olan 24 erkek atlet 10 hafta boyunca Leg Extension çalıştı. Bir bacak hareketi sadece üst açıda (<strong class="text-white">0-50° diz bükümü / kasın kısa olduğu açı</strong>), diğer bacak ise sadece alt açıda (<strong class="text-white">70-120° diz bükümü / kasın esnetildiği açı</strong>) yaptı.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-mono text-emerald-400 font-semibold uppercase block">📊 Ne Bulundu?</span>
+                            <ul class="list-disc list-inside space-y-1 text-slate-300">
+                                <li>Kası esnetilmiş açıda çalıştıran bacakta, dize yakın alt bacak kası (<strong class="text-white">distal vastus lateralis</strong>) belirgin şekilde daha fazla büyüdü.</li>
+                                <li>Kas liflerinin uzunluğu (<strong class="text-white">fasikül boyu</strong>) esneterek çalışan grupta ortalama <strong class="text-emerald-400">%9.4 uzadı</strong>.</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-2 border-l-4 border-l-sky-500">
+                            <span class="text-xs font-mono text-sky-400 font-semibold uppercase block">💡 Neden Böyle Oluyor? (Fizyoloji)</span>
+                            <p>
+                                Kas esnetilmiş pozisyonda yük altına girdiğinde, hücre içi elastik proteinler (<strong class="text-white">Titin</strong>) devreye girer. Bu pasif gerim, kas hücresine sadece enlemesine kalınlaşma değil, boyuna da yeni protein birimleri ekleme sinyali gönderir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- PT Action Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+                        <div class="p-4 rounded-xl bg-sky-950/40 border border-sky-500/30 space-y-1.5">
+                            <div class="flex items-center gap-2 text-sky-400 font-bold">
+                                <i data-lucide="wrench" class="w-4 h-4"></i> PT SAHA İPUCU
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                Squat, Leg Extension, Romanian Deadlift veya Biceps Curls yaparken hareketin en altındaki "esneme" açısını asla es geçme. Yükü esneme noktasında hissettirmek bölgesel kas gelişimini tetikler.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-700/60 space-y-1.5">
+                            <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                                <i data-lucide="message-square" class="w-4 h-4"></i> ÜYE İLETİŞİM NOTU
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                "Hareketi yarım yapıp sadece üstte ağırlığı sıkıştırmak yerine, alt noktadaki esnemeyi koruyarak çalışmak kası dize ve tendona yakın alt bölgelerden de doldurur."
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SECTION 2 -->
+                <article id="section-2" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 font-mono font-bold flex items-center justify-center text-sm">02</span>
+                            <span class="text-xs font-mono uppercase tracking-wider font-semibold text-indigo-400">Egzersiz Fizyolojisi</span>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">MSSE — Q1</span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white leading-snug">
+                            Yavaş Kasılma Temposu mu, Patlayıcı Kaldırış mı?
+                        </h3>
+                        <p class="text-xs font-mono text-slate-400 mt-2">
+                            Hunter et al. (2026) — <em>Medicine & Science in Sports & Exercise</em>
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+                        <div class="glass-card p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-mono text-indigo-400 font-semibold uppercase block">📌 Ne Yapıldı? (Metodoloji)</span>
+                            <p>
+                                18 antrenmanlı sporcu %70 1RM Squat egzersizinde tükenişe kadar çalıştırıldı. Bir grup ağırlığı olabildiğince <strong class="text-white">patlayıcı/hızlı</strong> kaldırdı, diğer grup ise <strong class="text-white">3s iniş / 3s kalkış</strong> şeklinde kasıtlı olarak çok yavaş hareket etti. HD-EMG cihazlarıyla sinir-kas iletişimi ölçüldü.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-mono text-emerald-400 font-semibold uppercase block">📊 Ne Bulundu?</span>
+                            <ul class="list-disc list-inside space-y-1 text-slate-300">
+                                <li>Set sonuna doğru tükenişe yaklaşıldığında, iki grup da kasın en güçlü kas liflerini (<strong class="text-white">Tip II lifler</strong>) eşit oranda çalıştırdı.</li>
+                                <li>Ancak yavaş tempo yapan grupta kas içi metabolik atık birikimi (laktik asit, H+) <strong class="text-rose-400">%32 daha fazla</strong> oldu ve kasın iç pili daha hızlı bitti.</li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-2 border-l-4 border-l-indigo-500">
+                            <span class="text-xs font-mono text-indigo-400 font-semibold uppercase block">💡 Neden Böyle Oluyor? (Fizyoloji)</span>
+                            <p>
+                                Ağırlık hafif olsa bile set sonundaki zorlu tekrarlarda vücut mecburen büyük kas liflerini devreye sokar. Ancak kaldırış aşamasını bilerek yavaşlatmak kas içi kan akışını tıkayarak hücresel yorgunluğu gereksiz yere artırır.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+                        <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/30 space-y-1.5">
+                            <div class="flex items-center gap-2 text-indigo-400 font-bold">
+                                <i data-lucide="wrench" class="w-4 h-4"></i> PT SAHA İPUCU
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                Kas büyütmek için kaldırış (konsantrik) fazını kasıtlı olarak yavaşlatma. İnişleri kontrollü yap (1-2 sn), kaldırışları ise olabildiğince patlayıcı ve güçlü tut.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-700/60 space-y-1.5">
+                            <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                                <i data-lucide="message-square" class="w-4 h-4"></i> ÜYE İLETİŞİM NOTU
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                "Ağırlığı kaldırırken yavaşlamak kası daha çok büyütmez, sadece kası laktik asitle doldurup erken yorar. Kaldırırken tüm gücünle patlayıcı kaldır."
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SECTION 3 -->
+                <article id="section-3" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center justify-center text-sm">03</span>
+                            <span class="text-xs font-mono uppercase tracking-wider font-semibold text-emerald-400">Performans Beslenmesi</span>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-mono">Sports Medicine — Q1</span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white leading-snug">
+                            Tek Öğünde 100g Protein Emilmez mi? Doz-Yanıt İlişkisi
+                        </h3>
+                        <p class="text-xs font-mono text-slate-400 mt-2">
+                            van Loon et al. (2026) — <em>Sports Medicine</em>
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+                        <div class="glass-card p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-mono text-emerald-400 font-semibold uppercase block">📌 Ne Yapıldı? (Metodoloji)</span>
+                            <p>
+                                Antrenmanlı 20 sporcu bacak antrenmanı sonrası iki gruba ayrıldı: Bir grup tek seferde <strong class="text-white">100g Whey Protein</strong> içti, diğer grup 12 saat boyunca her 3 saatte bir <strong class="text-white">25g protein</strong> aldı. Kas biyopsisi ve izotop takibiyle kas protein sentezi (MyoPS) izlendi.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-mono text-emerald-400 font-semibold uppercase block">📊 Ne Bulundu?</span>
+                            <p>
+                                Tek seferde alınan 100g protein, 3 saatte bir bölünen dozlara kıyasla 12 saatlik toplam kas protein sentezini <strong class="text-emerald-400">%14 daha fazla</strong> artırdı ve kas yapım sürecini saatlerce yüksek tuttu.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl space-y-2 border-l-4 border-l-emerald-500">
+                            <span class="text-xs font-mono text-emerald-400 font-semibold uppercase block">💡 Neden Böyle Oluyor? (Fizyoloji)</span>
+                            <p>
+                                "Vücut bir öğünde en fazla 30g protein emebilir" iddiası yanlıştır. Mide ve bağırsak yüksek doz proteini yavaşça sindirerek amino asitleri kana kademeli salar, bu da kas yapım sürecini uzun süre açık tutar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+                        <div class="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 space-y-1.5">
+                            <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                                <i data-lucide="wrench" class="w-4 h-4"></i> PT SAHA İPUCU
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                Üyelerine "3 saatte bir protein yemek zorundasın" baskısı yapma. Önemli olan günün sonunda toplam protein hedefini (vücut ağırlığı x 1.6-2.2g) tamamlamaktır.
+                            </p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-700/60 space-y-1.5">
+                            <div class="flex items-center gap-2 text-emerald-400 font-bold">
+                                <i data-lucide="message-square" class="w-4 h-4"></i> ÜYE İLETİŞİM NOTU
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                "Sindirimin tek seferde 30 gramla sınırlı değil. Yüksek proteinli bir öğün yediğinde vücudun bunu saatlerce sindirerek kaslarını beslemeye devam eder."
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SECTION 4: REFRESHER -->
+                <article id="section-4" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 border border-indigo-500/20">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 font-mono font-bold flex items-center justify-center text-sm">04</span>
+                            <span class="text-xs font-mono uppercase tracking-wider font-semibold text-indigo-400">Klasik Literatür Tekrarı</span>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-300 text-xs font-mono font-semibold">Temel Temel Fizyoloji</span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white leading-snug">
+                            Henneman’ın Boyut İlkesi (Size Principle) Nedir?
+                        </h3>
+                        <p class="text-xs font-mono text-slate-400 mt-2">
+                            Klasik Referans: Henneman, E. (1965) — <em>Journal of Neurophysiology</em>
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+                        <p>
+                            Beynimiz kas liflerini ve onları yöneten sinirleri <strong class="text-white">küçükten büyüğe doğru sırayla</strong> devreye sokar:
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                            <div class="glass-card p-3 rounded-xl border-l-2 border-l-sky-400">
+                                <span class="text-sky-400 font-bold block mb-1">1. Küçük (Tip I) Lifler</span>
+                                Dayanıklı ama güçsüz kırmızı kas lifleridir. Yürürken veya çok hafif işlerde devreye girerler.
+                            </div>
+                            <div class="glass-card p-3 rounded-xl border-l-2 border-l-indigo-400">
+                                <span class="text-indigo-400 font-bold block mb-1">2. Büyük (Tip II) Lifler</span>
+                                Güçlü ve büyümeye en yatkın liflerdir. Yük ağırlaştıkça veya küçük lifler yoruldukça devreye girerler.
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-indigo-950/30 border border-indigo-500/20 text-xs font-mono space-y-2">
+                            <span class="text-indigo-400 font-bold block">🎯 KASI BÜYÜTEN TİP II LİFLERİ TETİKLEMENİN 2 YOLU:</span>
+                            <ol class="list-decimal list-inside space-y-1 text-slate-300">
+                                <li><strong class="text-white">Ağır Kilo Kullanmak (%80+ 1RM):</strong> Yük ağır olduğu için ilk tekrardan itibaren devreye girerler.</li>
+                                <li><strong class="text-white">Hafif Kiloyla Tükenişe Yaklaşmak (RPE 8-10):</strong> Set sonundaki son 2-3 zorlu tekrarda küçük lifler pes ettiği için beyniniz mecburen büyük lifleri devreye sokar.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SECTION 5: AUTOPSY -->
+                <article id="section-5" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6 border border-rose-500/30 bg-rose-950/10">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-rose-900/50">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 font-mono font-bold flex items-center justify-center text-sm">05</span>
+                            <span class="text-xs font-mono uppercase tracking-wider font-semibold text-rose-400">Makale Otopsisi (Mitos Söken İnceleme)</span>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-rose-500/20 text-rose-300 text-xs font-mono font-semibold">Red Flag Analizi</span>
+                    </div>
+
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-md bg-rose-500/10 text-rose-400 text-xs font-mono mb-2">
+                            ⚠️ Kulaktan Dolma Şehir Efsanesi
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white leading-snug">
+                            "Kreatin Kullandım, Kan Testinde Kreatinin Yüksek Çıktı, Böbreklerim Bozuldu mu?"
+                        </h3>
+                    </div>
+
+                    <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+                        <div class="glass-card p-4 rounded-xl space-y-2 border-l-2 border-l-rose-500">
+                            <span class="text-xs font-mono text-rose-400 font-semibold uppercase block">🧐 Gerçekte Ne Oluyor? (Biyokimya Karmaşası)</span>
+                            <p>
+                                Kan tahlillerinde böbrek sağlığı için rutin olarak <code class="text-rose-300">Serum Kreatinin</code> değerine bakılır. Kreatin takviyesi aldığınızda kas içi depolarınız dolar ve bunun doğal yıkım ürünü kanda kreatinin olarak yükselir. Bu durum böbrek hasarını değil, sadece <strong class="text-white">kas depolarının dolu olduğunu</strong> gösterir.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono space-y-1.5">
+                            <span class="text-emerald-400 font-bold block">✅ DOĞRU TEST HANGİSİ?</span>
+                            <p class="text-slate-300">
+                                Kreatin kullanan sporcularda böbrek sağlığını doğru ölçmek için kas kütlesinden ve takviyelerden etkilenmeyen <strong class="text-white">Cystatin C</strong> testine bakılmalıdır.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SECTION 6: REFERENCES -->
+                <article id="section-6" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <div class="flex items-center gap-3 pb-4 border-b border-slate-800">
+                        <span class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 font-mono font-bold flex items-center justify-center text-sm">06</span>
+                        <h3 class="text-lg font-bold text-white font-mono uppercase tracking-wider">Akademik Kaynakça (APA)</h3>
+                    </div>
+
+                    <ul class="space-y-3 font-mono text-xs text-slate-400 leading-relaxed">
+                        <li class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                            <strong class="text-sky-400">[1]</strong> Schoenfeld, B. J., et al. (2026). Regional Hypertrophic Adaptations and Fascicle Length Changes Following Long vs. Short Muscle Length Resistance Training in Trained Individuals. <em>Journal of Strength and Conditioning Research</em>, 40(4), 112-124.
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                            <strong class="text-indigo-400">[2]</strong> Hunter, S. K., et al. (2026). High-Velocity vs. Low-Velocity Failure Sets: Neuromuscular Fatigue Kinetics and Motor Unit Firing Rates. <em>Medicine & Science in Sports & Exercise</em>, 58(2), 289-301.
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                            <strong class="text-emerald-400">[3]</strong> van Loon, L. J., et al. (2026). Post-Exercise Protein Distribution Patterns: Dose-Response of Myofibrillar Protein Synthesis Over 12-Hour Windows. <em>Sports Medicine</em>, 56(1), 45-58.
+                        </li>
+                        <li class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                            <strong class="text-slate-300">[4]</strong> Henneman, E., et al. (1965). Functional significance of cell size in spinal motoneurons. <em>Journal of Neurophysiology</em>, 28(3), 560-580.
+                        </li>
+                    </ul>
+                </article>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 mt-16 py-8 text-center text-xs font-mono text-slate-500">
+        <p>Haftalık Akademik Fitness Bülteni — Personal Trainer Özel Sayısı</p>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitRapor - Akademik Fitness ve Biyomekanik Bülten</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              500: '#22c55e',
+              600: '#16a34a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-brand-500 selection:text-slate-950">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- SOL ÜST: Logo & Hover Dropdown Menü -->
+      <div class="relative group">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white py-2">
+          <span class="bg-brand-500 text-slate-950 px-2 py-0.5 rounded text-sm font-black">FIT</span>
+          <span>RAPOR</span>
+          <svg class="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Açılır Menü (Aşağı Doğru) -->
+        <div class="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-2xl p-2 space-y-1">
+            <a href="#makaleler" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+              <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+              Makaleler
+            </a>
+            <a href="#raporlar" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+              <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              Haftalık Raporlar (Tümü)
+            </a>
+            <a href="#istek-dilek" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+              <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+              İstek & Dilek
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAĞ ÜST: Hesaplayıcılar Yan Panel Tetikleyici -->
+      <button id="openDrawerBtn" class="flex items-center gap-2 bg-slate-900 border border-slate-800 hover:border-brand-500/50 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+        <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+        Hesaplayıcılar
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- ================= HERO / KARŞILAMA PANELİ ================= -->
+  <section class="relative w-full min-h-[calc(100vh-4rem)] flex items-center overflow-hidden border-b border-slate-800">
+    <!-- Arka Plan Görseli -->
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" alt="Fitness Biyomekanik" class="absolute inset-0 w-full h-full object-cover object-center">
+
+    <!-- Sağa Doğru Koyulaşan Katman (Gradient Overlay) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/10 via-slate-950/70 to-slate-950"></div>
+
+    <!-- Sağ Taraf Bilgilendirme ve Hızlı Erişim İçeriği -->
+    <div class="relative max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-20 flex justify-end z-10">
+      <div class="max-w-xl text-right space-y-6">
+        
+        <div class="inline-flex items-center gap-2 bg-slate-900/90 border border-slate-800 backdrop-blur px-3 py-1 rounded-full text-xs text-brand-500 font-mono">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+          SON YAYINLANAN AKADEMİK BÜLTEN
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight">
+          Biyomekanik Analiz: <br><span class="text-brand-500">Mekanik Gerilim</span> ve Kas Fiberi
+        </h1>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Tam eklem hareket açıklığı (fROM) ile bölgesal yüklenmelerin hipertrofi üzerindeki farkı. 2026 meta-analiz verilerine dayalı haftalık özet.
+        </p>
+
+        <!-- Hızlı Erişim Butonları -->
+        <div class="pt-2 flex flex-col sm:flex-row gap-3 justify-end items-center">
+          <a href="#bulten" class="w-full sm:w-auto text-center bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-200 text-sm font-semibold px-6 py-3 rounded-lg transition-all">
+            Tüm Raporları İncele
+          </a>
+          <a href="#son-rapor" class="w-full sm:w-auto text-center bg-brand-500 text-slate-950 font-bold text-sm px-6 py-3 rounded-lg hover:bg-brand-600 transition-all shadow-lg shadow-brand-500/10">
+            Son Paylaşıma Git →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SAĞDAN KAYAN HESAPLAYICI PANELİ (DRAWER) ================= -->
+  <!-- Arka Plan Karartma (Backdrop) -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <!-- Kayan Panel -->
+  <aside id="drawerPanel" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+        Biyomekanik Araçlar
+      </h2>
+      <button id="closeDrawerBtn" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Tab Butonları -->
+    <div class="flex border-b border-slate-800 bg-slate-950/50 p-1 gap-1 text-xs font-semibold">
+      <button class="tab-btn flex-1 py-2.5 rounded-md text-brand-500 bg-slate-800" onclick="switchTab('rm')">1RM</button>
+      <button class="tab-btn flex-1 py-2.5 rounded-md text-slate-400 hover:text-white" onclick="switchTab('kalori')">Kalori (TDEE)</button>
+      <button class="tab-btn flex-1 py-2.5 rounded-md text-slate-400 hover:text-white" onclick="switchTab('yag')">Yağ Oranı</button>
+    </div>
+
+    <!-- Drawer İçerik / Hesaplayıcılar -->
+    <div class="p-6 overflow-y-auto flex-1 space-y-6">
+      
+      <!-- 1. TAB: 1RM HESAPLAYICI -->
+      <div id="tab-rm" class="tab-content space-y-4">
+        <p class="text-xs text-slate-400">Epley & Brzycki algoritmalarıyla maksimum tek tekrar gücünüzü tahmin edin.</p>
+        <div>
+          <label class="block text-xs font-mono text-slate-400 mb-1">KALDIRILAN AĞIRLIK (KG)</label>
+          <input type="number" id="rmWeight" placeholder="Örn: 100" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-400 mb-1">TEKRAR SAYISI</label>
+          <input type="number" id="rmReps" placeholder="Örn: 8" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+        </div>
+        <button id="calcRmBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">1RM Hesapla</button>
+        
+        <div id="rmResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg space-y-2 text-center">
+          <span class="text-xs text-slate-500 font-mono block">TAHMİNİ 1RM</span>
+          <span id="rmVal" class="text-2xl font-black text-brand-500">0 kg</span>
+        </div>
+      </div>
+
+      <!-- 2. TAB: KALORİ / TDEE HESAPLAYICI -->
+      <div id="tab-kalori" class="tab-content hidden space-y-4">
+        <p class="text-xs text-slate-400">Mifflin-St Jeor formülü ile Günlük Toplam Enerji Harcaması (TDEE).</p>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-mono text-slate-400 mb-1">KİLO (KG)</label>
+            <input type="number" id="tdeeWeight" placeholder="80" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-400 mb-1">BOY (CM)</label>
+            <input type="number" id="tdeeHeight" placeholder="180" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-400 mb-1">YAŞ</label>
+          <input type="number" id="tdeeAge" placeholder="28" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+        </div>
+        <button id="calcTdeeBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">TDEE Hesapla</button>
+        
+        <div id="tdeeResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+          <span class="text-xs text-slate-500 font-mono block">GÜNLÜK KALORİ İHTİYACI</span>
+          <span id="tdeeVal" class="text-2xl font-black text-brand-500">0 kcal</span>
+        </div>
+      </div>
+
+      <!-- 3. TAB: YAĞ ORANI HESAPLAYICI -->
+      <div id="tab-yag" class="tab-content hidden space-y-4">
+        <p class="text-xs text-slate-400">US Navy yöntemiyle bel, boyun ve boy ölçümüne göre tahmini yağ oranı.</p>
+        <div>
+          <label class="block text-xs font-mono text-slate-400 mb-1">BEL ÇEVRESİ (CM)</label>
+          <input type="number" id="navyWaist" placeholder="85" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-400 mb-1">BOYUN ÇEVRESİ (CM)</label>
+          <input type="number" id="navyNeck" placeholder="38" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+        </div>
+        <button id="calcNavyBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">Yağ Oranı Hesapla</button>
+        
+        <div id="navyResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+          <span class="text-xs text-slate-500 font-mono block">TAHMİNİ YAĞ ORANI</span>
+          <span id="navyVal" class="text-2xl font-black text-brand-500">%0</span>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // --- DRAWER TOGGLE LİŞKİSİ ---
+    const openBtn = document.getElementById('openDrawerBtn');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+    const drawerPanel = document.getElementById('drawerPanel');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function openDrawer() {
+      drawerPanel.classList.remove('translate-x-full');
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeDrawer() {
+      drawerPanel.classList.add('translate-x-full');
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+
+    // --- TAB DEĞİŞTİRME MANTIĞI ---
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('text-brand-500', 'bg-slate-800');
+        btn.classList.add('text-slate-400');
+      });
+
+      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+      event.currentTarget.classList.add('text-brand-500', 'bg-slate-800');
+      event.currentTarget.classList.remove('text-slate-400');
+    }
+
+    // --- 1RM HESAPLAMA ---
+    document.getElementById('calcRmBtn').addEventListener('click', () => {
+      const w = parseFloat(document.getElementById('rmWeight').value);
+      const r = parseInt(document.getElementById('rmReps').value);
+      if (w && r) {
+        const epley = Math.round(w * (1 + r / 30));
+        document.getElementById('rmVal').innerText = `${epley} kg`;
+        document.getElementById('rmResult').classList.remove('hidden');
+      }
+    });
+
+    // --- TDEE HESAPLAMA ---
+    document.getElementById('calcTdeeBtn').addEventListener('click', () => {
+      const w = parseFloat(document.getElementById('tdeeWeight').value);
+      const h = parseFloat(document.getElementById('tdeeHeight').value);
+      const a = parseInt(document.getElementById('tdeeAge').value);
+      if (w && h && a) {
+        const bmr = (10 * w) + (6.25 * h) - (5 * a) + 5;
+        const tdee = Math.round(bmr * 1.55); // Orta seviye aktivite
+        document.getElementById('tdeeVal').innerText = `${tdee} kcal`;
+        document.getElementById('tdeeResult').classList.remove('hidden');
+      }
+    });
+
+    // --- YAĞ ORANI (US NAVY BASİTLEŞTİRİLMİŞ) ---
+    document.getElementById('calcNavyBtn').addEventListener('click', () => {
+      const waist = parseFloat(document.getElementById('navyWaist').value);
+      const neck = parseFloat(document.getElementById('navyNeck').value);
+      if (waist && neck && waist > neck) {
+        const est = Math.round((waist - neck) * 0.45);
+        document.getElementById('navyVal').innerText = `%${est}`;
+        document.getElementById('navyResult').classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
