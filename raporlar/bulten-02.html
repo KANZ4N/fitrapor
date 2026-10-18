@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitRapor Akademik Bülten #02</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-brand-500 selection:text-slate-950 pb-16">
+
+    <!-- ================= ORTAK NAVBAR ================= -->
+    <nav class="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="relative group">
+                <a href="../index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight text-white py-2">
+                    <span class="bg-brand-500 text-slate-950 px-2 py-0.5 rounded text-sm font-black">FIT</span>
+                    <span>RAPOR</span>
+                    <svg class="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="absolute left-0 top-full pt-2 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-2xl p-2 space-y-1">
+                        <a href="../makaleler.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60">Makaleler (PubMed Dizin)</a>
+                        <a href="../raporlar.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-brand-500 bg-slate-800/60">Haftalık Rapor Arşivi</a>
+                        <a href="../istek.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60">İstek & Dilek</a>
+                    </div>
+                </div>
+            </div>
+            <button id="openDrawerBtn" class="flex items-center gap-2 bg-slate-900 border border-slate-800 hover:border-brand-500/50 text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                Hesaplayıcılar
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================= İÇERİK ================= -->
+    <main class="max-w-5xl mx-auto px-4 pt-8 space-y-10">
+
+        <!-- Intro Banner -->
+        <section class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden border-l-4 border-l-brand-500">
+            <div class="relative z-10 space-y-3">
+                <div class="inline-flex items-center space-x-2 text-xs font-semibold text-brand-400 uppercase tracking-wider">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Haftalık Literatür Özeti</span>
+                </div>
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Akademik Fitness Bülteni — Sayı #02</h2>
+                    <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-brand-500/10 text-brand-400 border border-brand-500/20">05 Ekim 2026</span>
+                </div>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Saha antrenörleri (PT) için özel hazırlanan bu sayıda: Yarım tekrarlar (Partial ROM), kardiyo-ağırlık etkileşimi, gece proteini, Selye'nin GAS Modeli ve Fasted Cardio efsanesinin otopsisi.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 1 -->
+        <article class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <span class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-sm">01</span>
+                    <div>
+                        <span class="text-xs text-brand-400 font-semibold uppercase">Biyomekanik & Hipertrofi</span>
+                        <h3 class="text-xl font-bold text-white">Alt Pozisyonda Kısmi Tekrarın (Lengthened Partials) Gücü</h3>
+                    </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">JSCR • Q1 Dergi</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-900/60 p-4 rounded-xl border border-slate-800 text-sm">
+                <div>
+                    <span class="text-xs text-slate-400 block font-semibold mb-1">Denek Grubu</span>
+                    <p class="text-slate-200">En az 2 yıl antrenman geçmişi olan n=28 eğitimli sporcu.</p>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-400 block font-semibold mb-1">Protokol (8 Hafta)</span>
+                    <p class="text-slate-200">Preacher Curl: Bir kol Tam ROM (0-130°), diğer kol sadece Alt Yarım ROM (0-65°).</p>
+                </div>
+                <div>
+                    <span class="text-xs text-slate-400 block font-semibold mb-1">Ölçüm Yöntemi</span>
+                    <p class="text-slate-200">Ultrasonografi ile Biceps Brachii kas kalınlığı.</p>
+                </div>
+            </div>
+
+            <div class="space-y-2 text-sm text-slate-300">
+                <p><strong>Bulgular:</strong> Alt yarım açıda (esnetilmiş pozisyon) çalışan kol %8.2 kas büyümesi gösterirken, tam açıda çalışan kol %5.4 büyümede kaldı ($p = 0.018$).</p>
+                <p><strong>Fizyolojik Neden:</strong> Tepe noktadaki "kası sıkıştırma" hissi hipertrofide alt noktadaki pasif+aktif mekanik gerimin gerisinde kalır.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 space-y-2">
+                    <div class="text-emerald-400 font-bold text-xs uppercase"><i class="fa-solid fa-dumbbell mr-1"></i> PT Saha İpucu</div>
+                    <p class="text-xs text-slate-300">Tükenişe ulaştığında seti bırakma! Alt noktada yarım tekrarlar yaparak kası tamamen tükenişe götür.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-indigo-950/30 border border-indigo-800/40 space-y-2">
+                    <div class="text-indigo-400 font-bold text-xs uppercase"><i class="fa-solid fa-comments mr-1"></i> Üye İletişim Notu</div>
+                    <p class="text-xs text-slate-300"><em>"Kası en çok büyüten şey alt noktadaki esneme hissidir. Set sonunda alt noktada yarım tekrarlar yapmak kas yapımını katlar."</em></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 2 -->
+        <article class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <span class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold text-sm">02</span>
+                    <div>
+                        <span class="text-xs text-rose-400 font-semibold uppercase">Egzersiz Fizyolojisi</span>
+                        <h3 class="text-xl font-bold text-white">Eşzamanlı Antrenman: Kardiyo Kas Gelişimini Çalar mı?</h3>
+                    </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">MSSE • Q1 Dergi</span>
+            </div>
+
+            <div class="space-y-2 text-sm text-slate-300">
+                <p><strong>Bulgular:</strong> Ağırlık öncesi yapılan yüksek şiddetli koşu kardiyosu bacak kuvvetini %12-15 düşürür. Ancak kardiyo bisiklet ile ve ağırlık sonrasında yapıldığında kas büyümesinde kayıp yaşanmaz.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 space-y-2">
+                    <div class="text-emerald-400 font-bold text-xs uppercase"><i class="fa-solid fa-dumbbell mr-1"></i> PT Saha İpucu</div>
+                    <p class="text-xs text-slate-300">Kardiyoyu ağırlık sonrasına koy. Koşu bandı yerine bisiklet seçerek eksantrik mikro-hasarı engelle.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-indigo-950/30 border border-indigo-800/40 space-y-2">
+                    <div class="text-indigo-400 font-bold text-xs uppercase"><i class="fa-solid fa-comments mr-1"></i> Üye İletişim Notu</div>
+                    <p class="text-xs text-slate-300"><em>"Kardiyo kas eritmez; ağırlıktan sonra yapacağımız 20 dakikalık bisiklet kas gelişimini bozmadan yağ yakımını destekler."</em></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 3 -->
+        <article class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">03</span>
+                    <div>
+                        <span class="text-xs text-emerald-400 font-semibold uppercase">Performans Beslenmesi</span>
+                        <h3 class="text-xl font-bold text-white">Gece Yatmadan Önce Protein Alımı ve Yağ Depolanması</h3>
+                    </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Sports Medicine • Q1 Dergi</span>
+            </div>
+
+            <div class="space-y-2 text-sm text-slate-300">
+                <p><strong>Bulgular:</strong> Yatmadan 30 dk önce alınan 40g Kazein Proteini gece uykusunda MPS'yi yüksek tutarak kas kütlesini artırmış, ancak metabolizma hızını (RMR) yüksek tuttuğu için yağ depolanmasına yol açmamıştır.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 space-y-2">
+                    <div class="text-emerald-400 font-bold text-xs uppercase"><i class="fa-solid fa-dumbbell mr-1"></i> PT Saha İpucu</div>
+                    <p class="text-xs text-slate-300">Proteini tamamlamakta zorlanan üyelerine yatmadan önce süzme yoğurt, lor veya kazein önerebilirsin.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-indigo-950/30 border border-indigo-800/40 space-y-2">
+                    <div class="text-indigo-400 font-bold text-xs uppercase"><i class="fa-solid fa-comments mr-1"></i> Üye İletişim Notu</div>
+                    <p class="text-xs text-slate-300"><em>"Gece protein yemek yağ yapmaz. Lor veya süzme yoğurt gibi kaliteli protein uykuda kaslarını onarır."</em></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 4 -->
+        <article class="glass-card rounded-2xl p-6 sm:p-8 space-y-6 border-l-4 border-l-amber-500">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">04</span>
+                    <div>
+                        <span class="text-xs text-amber-400 font-semibold uppercase">Klasik Literatür Tekrarı</span>
+                        <h3 class="text-xl font-bold text-white">Selye'nin Genel Adaptasyon Sendromu (GAS) ve Süperkompensasyon</h3>
+                    </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-amber-500/10 text-amber-300">Temel Fizyoloji İlkesi</span>
+            </div>
+
+            <div class="space-y-2 text-sm text-slate-300">
+                <p><strong>Evreler:</strong> 1. Alarm (Antrenman/Yıkım) $\rightarrow$ 2. Direnç / Uyum (Süperkompensasyon/Gelişim) $\rightarrow$ 3. Tükenme (Aşırı Yüklenme/Overtraining).</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 space-y-2">
+                    <div class="text-emerald-400 font-bold text-xs uppercase"><i class="fa-solid fa-dumbbell mr-1"></i> PT Saha İpucu</div>
+                    <p class="text-xs text-slate-300">Aynı kas grubunu çalıştırmak için ideal frekans haftada 2 gündür. Çok erken çalışmak tükenmeye, çok geç kalmak kazanç kaybına yol açar.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-indigo-950/30 border border-indigo-800/40 space-y-2">
+                    <div class="text-indigo-400 font-bold text-xs uppercase"><i class="fa-solid fa-comments mr-1"></i> Üye İletişim Notu</div>
+                    <p class="text-xs text-slate-300"><em>"Kas salonda değil, uykuda ve dinlenirken büyür. Salonda kası yıkıyoruz, evde beslenip uyuyarak daha güçlü inşa ediyoruz."</em></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- SECTION 5 -->
+        <article class="glass-card rounded-2xl p-6 sm:p-8 space-y-6 border-l-4 border-l-purple-500">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-3">
+                    <span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">05</span>
+                    <div>
+                        <span class="text-xs text-purple-400 font-semibold uppercase">Makale Otopsisi</span>
+                        <h3 class="text-xl font-bold text-white">"Aç Karnına Kardiyo (Fasted Cardio) 3 Kat Fazla Yağ Yakar!" Yalanı</h3>
+                    </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-rose-500/10 text-rose-300">Metodolojik Kusur</span>
+            </div>
+
+            <div class="space-y-2 text-sm text-slate-300">
+                <p><strong>Yanılsama:</strong> Aç karnına yapılan 1 saatlik kardiyoda yağ oksidasyonu anlık yüksek çıkabilir ancak vücut takip eden 23 saatte bunu dengeler. 24 saatlik net kalori ve yağ yakımı tok kardiyo ile tamamen aynıdır.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-800/40 space-y-2">
+                    <div class="text-emerald-400 font-bold text-xs uppercase"><i class="fa-solid fa-dumbbell mr-1"></i> PT Saha İpucu</div>
+                    <p class="text-xs text-slate-300">Aç karnına kardiyoda üyenin başı dönüyorsa zorlama. Önemli olan egzersiz anındaki açlık değil, gün sonundaki kalori açığıdır.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-indigo-950/30 border border-indigo-800/40 space-y-2">
+                    <div class="text-indigo-400 font-bold text-xs uppercase"><i class="fa-solid fa-comments mr-1"></i> Üye İletişim Notu</div>
+                    <p class="text-xs text-slate-300"><em>"Aç kardiyo sihirli değildir. Açken halsiz kalıyorsan meyveni yiyip kardiyo yapman daha çok kalori yakmanı sağlar."</em></p>
+                </div>
+            </div>
+        </article>
+
+        <!-- Kaynakça -->
+        <footer class="glass-card rounded-2xl p-6 sm:p-8 space-y-4 text-xs text-slate-400">
+            <h4 class="font-bold text-slate-200 text-sm"><i class="fa-solid fa-book-bookmark mr-2 text-brand-400"></i> Akademik Kaynakça (APA 7th)</h4>
+            <ol class="list-decimal pl-4 space-y-1 font-mono">
+                <li>Pedrosa, G. F., et al. (2026). Journal of Strength and Conditioning Research, 40(2), 145-158.</li>
+                <li>Schumann, M., et al. (2026). Medicine & Science in Sports & Exercise, 58(5), 912-925.</li>
+                <li>Trommelen, J., & van Loon, L. J. (2026). Sports Medicine, 56(3), 301-315.</li>
+                <li>Selye, H. (1956). The Stress of Life. McGraw-Hill.</li>
+                <li>Schoenfeld, B. J., et al. (2014). Journal of the International Society of Sports Nutrition, 11(1), 54.</li>
+            </ol>
+        </footer>
+
+    </main>
+
+    <!-- ================= ORTAK DRAWER PANELİ ================= -->
+    <div id="drawerOverlay" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <aside id="drawerPanel" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-slate-900 border-l border-slate-800 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                Biyomekanik Araçlar
+            </h2>
+            <button id="closeDrawerBtn" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <div class="flex border-b border-slate-800 bg-slate-950/50 p-1 gap-1 text-xs font-semibold">
+            <button class="tab-btn flex-1 py-2.5 rounded-md text-brand-500 bg-slate-800" onclick="switchTab('rm')">1RM</button>
+            <button class="tab-btn flex-1 py-2.5 rounded-md text-slate-400 hover:text-white" onclick="switchTab('kalori')">Kalori (TDEE)</button>
+            <button class="tab-btn flex-1 py-2.5 rounded-md text-slate-400 hover:text-white" onclick="switchTab('yag')">Yağ Oranı</button>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-1 space-y-6">
+            <div id="tab-rm" class="tab-content space-y-4">
+                <p class="text-xs text-slate-400">Epley & Brzycki algoritmalarıyla maksimum tek tekrar gücünüzü tahmin edin.</p>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 mb-1">KALDIRILAN AĞIRLIK (KG)</label>
+                    <input type="number" id="rmWeight" placeholder="Örn: 100" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 mb-1">TEKRAR SAYISI</label>
+                    <input type="number" id="rmReps" placeholder="Örn: 8" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <button id="calcRmBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">1RM Hesapla</button>
+                <div id="rmResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+                    <span class="text-xs text-slate-500 font-mono block">TAHMİNİ 1RM</span>
+                    <span id="rmVal" class="text-2xl font-black text-brand-500">0 kg</span>
+                </div>
+            </div>
+
+            <div id="tab-kalori" class="tab-content hidden space-y-4">
+                <p class="text-xs text-slate-400">Mifflin-St Jeor formülü ile Günlük Toplam Enerji Harcaması (TDEE).</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-mono text-slate-400 mb-1">KİLO (KG)</label>
+                        <input type="number" id="tdeeWeight" placeholder="80" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono text-slate-400 mb-1">BOY (CM)</label>
+                        <input type="number" id="tdeeHeight" placeholder="180" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 mb-1">YAŞ</label>
+                    <input type="number" id="tdeeAge" placeholder="28" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <button id="calcTdeeBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">TDEE Hesapla</button>
+                <div id="tdeeResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+                    <span class="text-xs text-slate-500 font-mono block">GÜNLÜK KALORİ İHTİYACI</span>
+                    <span id="tdeeVal" class="text-2xl font-black text-brand-500">0 kcal</span>
+                </div>
+            </div>
+
+            <div id="tab-yag" class="tab-content hidden space-y-4">
+                <p class="text-xs text-slate-400">US Navy yöntemiyle bel ve boyun ölçümüne göre tahmini yağ oranı.</p>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 mb-1">BEL ÇEVRESİ (CM)</label>
+                    <input type="number" id="navyWaist" placeholder="85" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 mb-1">BOYUN ÇEVRESİ (CM)</label>
+                    <input type="number" id="navyNeck" placeholder="38" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:outline-none focus:border-brand-500">
+                </div>
+                <button id="calcNavyBtn" class="w-full bg-brand-500 text-slate-950 font-bold py-2.5 rounded-lg text-sm hover:bg-brand-600 transition-colors">Yağ Oranı Hesapla</button>
+                <div id="navyResult" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-lg text-center">
+                    <span class="text-xs text-slate-500 font-mono block">TAHMİNİ YAĞ ORANI</span>
+                    <span id="navyVal" class="text-2xl font-black text-brand-500">%0</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
